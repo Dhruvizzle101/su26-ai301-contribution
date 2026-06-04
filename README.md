@@ -12,7 +12,8 @@
 ## Phase I: Issue Selection
 
 **Issue:** tutorials : list for llama.cpp  
-**Issue Link:** https://github.com/ggml-org/llama.cpp/issues/13523  
+**Issue Link:** https://github.com/ggml-org/llama.cpp/issues/13523
+**Comment on Issue:** https://github.com/ggml-org/llama.cpp/issues/13523#issuecomment-4617822754
 **Repository:** ggml-org/llama.cpp  
 **My specific tutorial:** Apple A-chipsets — how to estimate a suitable model size
 
