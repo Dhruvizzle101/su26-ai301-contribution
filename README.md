@@ -26,7 +26,52 @@ I chose this because I am a Mac user working on Apple Silicon hardware daily, so
 ---
 
 ## Phase II: Understanding the Issue
-*(To be filled in after reproducing the problem)*
+
+### Environment Setup
+Built llama.cpp from source on MacBook Air (Apple Silicon, arm64) using 
+CMake and Metal backend. No major issues — Metal is enabled by default on 
+Mac. Build completed successfully with AppleClang 17.0.0.
+
+**Working Branch:** https://github.com/Dhruvizzle101/llama.cpp/tree/tutorial-apple-chipsets-13523
+
+### Steps to Reproduce
+1. Install llama.cpp on a Mac with Apple Silicon
+2. Attempt to find official documentation on which model size fits your chip
+3. **Expected:** A clear guide explaining model size estimation for Apple Silicon
+4. **Actual:** No such guide exists in the llama.cpp documentation
+
+### Solution Plan
+
+**Understand:** 
+Mac users on Apple Silicon have no official guide for estimating which LLM 
+model sizes will fit their unified memory. Users either crash their system 
+downloading models too large, or run unnecessarily small models not knowing 
+they could run something better.
+
+**Match:** 
+The llama.cpp project maintains a tutorials list (issue #13523) where 
+community members contribute practical guides. Existing tutorials follow a 
+clear Markdown format in GitHub Discussions under "Show and Tell."
+
+**Plan:**
+1. Write tutorial covering unified memory architecture on Apple Silicon
+2. Document the model size formula: parameters × bytes per weight
+3. Create a quantization comparison table (Q2/Q4/Q6/Q8/F16)
+4. Build a lookup table mapping Mac RAM tiers to runnable model sizes
+5. Add practical llama.cpp commands for testing models before downloading
+6. Post as a GitHub Discussion in llama.cpp under Show and Tell
+7. Link back to issue #13523
+
+**Implement:** 
+https://github.com/Dhruvizzle101/llama.cpp/tree/tutorial-apple-chipsets-13523
+
+**Review:** 
+Will follow llama.cpp CONTRIBUTING.md guidelines and match the format of 
+existing tutorials in the project.
+
+**Evaluate:** 
+Tutorial will be verified by running actual llama.cpp commands on my 
+MacBook Air and confirming all model size estimates are accurate.
 
 ---
 
