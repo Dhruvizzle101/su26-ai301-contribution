@@ -5,7 +5,7 @@
 **Student:** Dhruv Kothari  
 **GitHub:** Dhruvizzle101  
 **Program:** CodePath Advanced AI Open-Source Capstone (AI301) — Summer 2026  
-**Status:** Phase I Complete
+**Status:** Phase IV Complete
 
 ---
 
@@ -104,5 +104,30 @@ MacBook Air and confirming all model size estimates are accurate.
   verify the commands in the tutorial
 ---
 
-## Phase IV: Pull Request
-*(To be filled in upon PR submission)*
+
+## Phase IV: Submit & Iterate
+
+**PR Link:** https://github.com/ggml-org/llama.cpp/pull/25068
+
+**PR Description:**
+Added a tutorial guide for Apple Silicon Mac users on how to estimate 
+a suitable model size when running LLMs with llama.cpp. The guide covers 
+unified memory architecture, the model size formula, quantization levels, 
+a Mac RAM lookup table, practical llama.cpp commands, and recommendations 
+by Mac memory size.
+
+**Status:** Awaiting review
+
+**Maintainer Feedback:** None yet — PR submitted on June 26, 2026. 
+Tagged @ggerganov for review.
+
+## Learnings & Reflections
+
+This was my first open source contribution to a major AI repository. 
+The biggest challenge was adhering to llama.cpp's strict no AI-generated 
+content policy, which forced me to genuinely understand the concepts of 
+unified memory, quantization, and model size estimation before writing 
+about them. Building llama.cpp from source and seeing it run on my own 
+Mac made the tutorial more credible and accurate. I learned that open 
+source contribution is less about writing perfect code and more about 
+communicating clearly with maintainers and the community.
