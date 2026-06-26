@@ -75,9 +75,33 @@ MacBook Air and confirming all model size estimates are accurate.
 
 ---
 
-## Phase III: Implementation
-*(To be filled in during development)*
+## Phase III: Build
 
+### Implementation Notes
+
+**What I built:**
+- Wrote a complete tutorial on Apple A-chipsets model size estimation for llama.cpp
+- Tutorial covers unified memory architecture, model size formula, quantization 
+  levels, Mac RAM lookup table, practical llama.cpp commands, and recommendations
+  by Mac memory size
+- Posted as a GitHub Discussion in the llama.cpp Show and Tell section
+
+**Code Changes:**
+- Branch: https://github.com/Dhruvizzle101/llama.cpp/tree/tutorial-apple-chipsets-13523
+- Tutorial file: docs/apple-chipsets-model-size-guide.md
+- Discussion: https://github.com/ggml-org/llama.cpp/discussions/25065
+
+**Testing Strategy:**
+- Verified all llama.cpp commands by building and running llama.cpp locally 
+  on MacBook Air with Apple Silicon
+- Confirmed Metal backend is enabled by default on arm64
+- All model size calculations verified manually using the formula
+
+**Challenges Faced:**
+- llama.cpp has a strict no AI-generated content policy so all tutorial 
+  content was written independently
+- Had to build llama.cpp from source using CMake before being able to 
+  verify the commands in the tutorial
 ---
 
 ## Phase IV: Pull Request
