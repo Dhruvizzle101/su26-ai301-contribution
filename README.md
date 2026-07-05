@@ -131,3 +131,28 @@ about them. Building llama.cpp from source and seeing it run on my own
 Mac made the tutorial more credible and accurate. I learned that open 
 source contribution is less about writing perfect code and more about 
 communicating clearly with maintainers and the community.
+
+
+# Cycle 2
+
+## Phase I: Issue Selection
+
+**Issue:** WorkingMemory storage management
+**Issue Link:** https://github.com/Pipelex/pipelex/issues/160
+**Repository:** Pipelex/pipelex
+**Comment on Issue:** [paste your comment link here]
+
+**Problem Summary:**
+Most Stuff data in Pipelex is held fully in memory as it passes between pipes.
+For large payloads like video this doesn't scale. The fix is implementing a
+StorageProviderAbstract system so pipe inputs/outputs are stored and loaded
+via a lightweight URI instead of raw bytes.
+
+**Why I chose this issue:**
+Pipelex is a Python AI pipeline framework and this issue sits directly at the
+intersection of AI workflow orchestration and storage architecture. Having worked
+on LLM orchestration pipelines at HumanityAI, I understand the importance of
+efficient data handling in AI workflows. The maintainer provided a clear spec
+with an exact interface to implement, making this a well-scoped contribution.
+
+**Status:** Phase I Complete
