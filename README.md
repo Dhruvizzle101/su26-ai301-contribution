@@ -142,7 +142,7 @@ communicating clearly with maintainers and the community.
 **Issue:** feat req: make custom summary available over API/MCP and AI chat
 **Issue Link:** https://github.com/BasedHardware/omi/issues/7478
 **Repository:** BasedHardware/omi
-**Comment on Issue:** [paste your comment link here]
+**Comment on Issue:** https://github.com/BasedHardware/omi/issues/7478#issuecomment-4952155353
 
 **Problem Summary:**
 Users can create custom summaries in omi with their own prompts, getting 
