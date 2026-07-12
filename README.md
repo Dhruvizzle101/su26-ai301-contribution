@@ -145,18 +145,80 @@ communicating clearly with maintainers and the community.
 **Comment on Issue:** https://github.com/BasedHardware/omi/issues/7478#issuecomment-4952155353
 
 **Problem Summary:**
-Users can create custom summaries in omi with their own prompts, getting 
-more precise results. However these custom summaries are not accessible 
-via the API, MCP endpoints, or AI chat — only the default omi-generated 
-summaries are returned. The fix is exposing custom summaries through the 
+Users can create custom summaries in omi with their own prompts, getting
+more precise results. However these custom summaries are not accessible
+via the API, MCP endpoints, or AI chat where only the default omi-generated
+summaries are returned. The fix is exposing custom summaries through the
 existing API endpoints alongside the default ones.
 
 **Why I chose this issue:**
-Omi is an AI wearable device app with 13k stars that processes real-world 
-conversations and memories. This issue sits at the intersection of AI 
-summarization and API design, which is directly relevant to my LLM 
-orchestration experience at HumanityAI. The fix requires understanding 
-how the backend serves summaries and extending it to include user-generated 
+Omi is an AI wearable device app with 13k stars that processes real-world
+conversations and memories. This issue sits at the intersection of AI
+summarization and API design, which is directly relevant to my LLM
+orchestration experience at HumanityAI. The fix requires understanding
+how the backend serves summaries and extending it to include user-generated
 ones — real Python backend work with clear scope.
 
-**Status:** Phase I Complete
+---
+
+## Phase II: Understanding the Issue
+
+### Environment Setup
+Cloned fork of BasedHardware/omi and set up the backend environment.
+Installed dependencies via uv. Unit tests run successfully with uv run pytest.
+
+**Working Branch:** https://github.com/Dhruvizzle101/omi/tree/Dhruvizzle101/fix/mcp-custom-summary-7478
+
+### Steps to Reproduce
+1. User creates a custom summary in omi using their own prompt
+2. Custom summary is stored in apps_results field on the Conversation model
+3. User queries conversations via MCP endpoint
+4. apps_results is missing from the response — custom summary is gone
+
+### Root Cause
+SimpleConversation model in routers/mcp.py does not include apps_results
+field. Pydantic only serializes declared fields so custom summaries are
+silently dropped before the response is sent.
+
+### Solution Plan
+
+**Understand:** Custom summaries stored in apps_results are dropped by
+the MCP endpoints because SimpleConversation doesn't declare that field.
+
+**Match:** The REST API returns apps_results correctly via model_dump()
+on the full Conversation model. The fix brings MCP in line with REST.
+
+**Plan:**
+1. Import AppResult from models.conversation in routers/mcp.py
+2. Add apps_results: List[AppResult] = [] to SimpleConversation
+3. Write unit tests to verify the fix
+
+**Implement:** https://github.com/Dhruvizzle101/omi/tree/Dhruvizzle101/fix/mcp-custom-summary-7478
+
+**Review:** Will follow CONTRIBUTING.md and omi code style before PR
+
+**Evaluate:** Two unit tests written and passing locally
+
+---
+
+## Phase III: Build
+
+### Implementation
+Made two changes to routers/mcp.py:
+1. Added `from models.conversation import AppResult` to imports
+2. Added `apps_results: List[AppResult] = []` to SimpleConversation model
+
+### Tests
+Created tests/unit/test_mcp_apps_results.py with two tests:
+- test_simple_conversation_includes_apps_results — PASSED
+- test_simple_conversation_apps_results_defaults_to_empty — PASSED
+
+### Branch
+https://github.com/Dhruvizzle101/omi/tree/Dhruvizzle101/fix/mcp-custom-summary-7478
+
+---
+
+## Phase IV: Submit & Iterate
+*(To be filled in upon PR submission)*
+
+**Status:** Cycle 2 — Phase III Complete
