@@ -133,26 +133,30 @@ source contribution is less about writing perfect code and more about
 communicating clearly with maintainers and the community.
 
 
+---
+
 # Cycle 2
 
 ## Phase I: Issue Selection
 
-**Issue:** WorkingMemory storage management
-**Issue Link:** https://github.com/Pipelex/pipelex/issues/160
-**Repository:** Pipelex/pipelex
+**Issue:** feat req: make custom summary available over API/MCP and AI chat
+**Issue Link:** https://github.com/BasedHardware/omi/issues/7478
+**Repository:** BasedHardware/omi
 **Comment on Issue:** [paste your comment link here]
 
 **Problem Summary:**
-Most Stuff data in Pipelex is held fully in memory as it passes between pipes.
-For large payloads like video this doesn't scale. The fix is implementing a
-StorageProviderAbstract system so pipe inputs/outputs are stored and loaded
-via a lightweight URI instead of raw bytes.
+Users can create custom summaries in omi with their own prompts, getting 
+more precise results. However these custom summaries are not accessible 
+via the API, MCP endpoints, or AI chat — only the default omi-generated 
+summaries are returned. The fix is exposing custom summaries through the 
+existing API endpoints alongside the default ones.
 
 **Why I chose this issue:**
-Pipelex is a Python AI pipeline framework and this issue sits directly at the
-intersection of AI workflow orchestration and storage architecture. Having worked
-on LLM orchestration pipelines at HumanityAI, I understand the importance of
-efficient data handling in AI workflows. The maintainer provided a clear spec
-with an exact interface to implement, making this a well-scoped contribution.
+Omi is an AI wearable device app with 13k stars that processes real-world 
+conversations and memories. This issue sits at the intersection of AI 
+summarization and API design, which is directly relevant to my LLM 
+orchestration experience at HumanityAI. The fix requires understanding 
+how the backend serves summaries and extending it to include user-generated 
+ones — real Python backend work with clear scope.
 
 **Status:** Phase I Complete
